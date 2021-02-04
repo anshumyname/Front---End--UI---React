@@ -3,7 +3,9 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 
 function RenderDish(dish) {
+    
     if (dish != null) {
+        
         return (
             <div className="row">
                 <div className="col-12 col-md-5 mt-1">
@@ -31,7 +33,8 @@ function RenderDish(dish) {
     }
 }
 
-function RenderComments({comentarray}) {
+function RenderComments(comentarray) {
+
     const comments = comentarray.map((com) => {
         return (
             <div key={com.id} className="ul list-unstyled">
