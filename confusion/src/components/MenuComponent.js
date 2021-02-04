@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
-
+import DishdetailComponent from './DishdetailComponent';
 
 function RenderMenuItem( {dish, onClick}) {
     return  (
@@ -18,6 +18,7 @@ function RenderMenuItem( {dish, onClick}) {
 
     
     const MENU = (props) => {
+        
         const menu = props.dishes.map((dish) => {
             return (
                 <div key={dish.id} className="col-12 col-md-5 mt-1">
@@ -31,6 +32,7 @@ function RenderMenuItem( {dish, onClick}) {
                 <div className="row">
                         {menu}
                 </div>
+                
             </div>
         );
     
