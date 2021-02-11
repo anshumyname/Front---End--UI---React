@@ -87,8 +87,6 @@ class Contact extends Component {
                                         minLength: 'Must be greater than 2 char',
                                         maxLength: 'Must be less than 15 chars'
                                     }}>
-
-
                                     </Errors>
 
                                 </Col>
