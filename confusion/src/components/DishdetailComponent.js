@@ -3,7 +3,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle ,Button,  Breadcrumb, Brea
 import {Link } from 'react-router-dom';
 import  CommentForm  from "./CommentForm";
 
-function RenderDish(dish , comments) {
+function RenderDish(dish , comments, addComment, dishId) {
     
     if (dish != null) {
         
@@ -21,7 +21,7 @@ function RenderDish(dish , comments) {
                 <div className="col-md-5">
                     <h4> Comments </h4>
                     {RenderComments(comments)}
-                    <CommentForm />
+                    <CommentForm dishId={dishId} addComment_={addComment}/>
                 </div>
             </div>
 
@@ -52,7 +52,7 @@ function RenderComments(comentarray) {
 
 
 const Dishdetail = (props) => {
-    console.log(props);
+    
     return (
         <div className="container">
              <div className="row">
@@ -65,7 +65,7 @@ const Dishdetail = (props) => {
                     <hr />
                 </div>
             </div>
-            {RenderDish(props.dish , props.comments)}
+            {RenderDish(props.dish , props.comments, props.addComment, props.dish.id)}
         </div>
     
     );
