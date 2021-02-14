@@ -1,14 +1,21 @@
-import { COMMENTS } from '../shared/comment';
+import { act } from 'react-dom/test-utils';
 import * as ActionTypes from "./ActionType";
 
-export const Comments = (state = COMMENTS,  action) => {
+export const Comments = (state = { 
+    errMess: null,
+    comments: []
+},  action) => {
     switch(action.type){
+        case ActionTypes.ADD_COMMENTS:
+            return {...state, errMess: null, comments: action.payload};
+        case ActionTypes.COMMENTS_FAILED:
+            return {...state , errmess:action.payload,comments: []}
         case ActionTypes.ADD_COMMENT:
-            var comment = action.payload
-            comment.id = state.length;
+            var comment = action.payload;
+            comment.id = state.comments.length;
             comment.date = new Date().toISOString();
-            console.log("adding to state ", comment)
-            return state.concat(comment);
+            return {...state, comments: state.comments.concat(comment)}
+
         default:
             return state;
         

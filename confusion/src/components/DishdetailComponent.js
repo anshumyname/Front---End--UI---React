@@ -3,6 +3,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Button, Breadcrumb, Bread
 import { Link } from 'react-router-dom';
 import CommentForm from "./CommentForm";
 import Loading from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 function RenderDish(dish, comments, addComment, dishId) {
 
@@ -12,7 +13,7 @@ function RenderDish(dish, comments, addComment, dishId) {
             <div className="row">
                 <div className="col-12 col-md-5 mt-1">
                     <Card>
-                        <CardImg width="100%" src={dish.image} alt={dish.name} />
+                        <CardImg width="100%" src={baseUrl+dish.image} alt={dish.name} />
                         <CardBody>
                             <CardTitle>{dish.name}</CardTitle>
                             <CardText>{dish.description}</CardText>
