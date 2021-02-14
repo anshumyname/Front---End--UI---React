@@ -5,7 +5,7 @@ import CommentForm from "./CommentForm";
 import Loading from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 
-function RenderDish(dish, comments, addComment, dishId) {
+function RenderDish(dish, comments, postComment, dishId) {
 
     if (dish != null) {
 
@@ -23,7 +23,7 @@ function RenderDish(dish, comments, addComment, dishId) {
                 <div className="col-md-5">
                     <h4> Comments </h4>
                     {RenderComments(comments)}
-                    <CommentForm dishId={dishId} addComment_={addComment} />
+                    <CommentForm dishId={dishId} addComment_={postComment} />
                 </div>
             </div>
 
@@ -88,7 +88,7 @@ const Dishdetail = (props) => {
                         <hr />
                     </div>
                 </div>
-                {RenderDish(props.dish, props.comments, props.addComment, props.dish.id)}
+                {RenderDish(props.dish, props.comments, props.postComment, props.dish.id)}
             </div>
 
         );
