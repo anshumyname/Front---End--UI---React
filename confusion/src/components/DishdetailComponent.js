@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import CommentForm from "./CommentForm";
 import Loading from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 function RenderDish(dish, comments, postComment, dishId) {
 
@@ -12,13 +13,18 @@ function RenderDish(dish, comments, postComment, dishId) {
         return (
             <div className="row">
                 <div className="col-12 col-md-5 mt-1">
-                    <Card>
-                        <CardImg width="100%" src={baseUrl+dish.image} alt={dish.name} />
-                        <CardBody>
-                            <CardTitle>{dish.name}</CardTitle>
-                            <CardText>{dish.description}</CardText>
-                        </CardBody>
-                    </Card>
+                    <FadeTransform in
+                        transformProps={{
+                            exitTransform: 'scale(0.5) translateY(-50%)'
+                        }}>
+                        <Card>
+                            <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+                            <CardBody>
+                                <CardTitle>{dish.name}</CardTitle>
+                                <CardText>{dish.description}</CardText>
+                            </CardBody>
+                        </Card>
+                    </FadeTransform>
                 </div>
                 <div className="col-md-5">
                     <h4> Comments </h4>
@@ -41,13 +47,16 @@ function RenderComments(comentarray) {
 
     const comments = comentarray.map((com) => {
         return (
-
-            <div key={com.id} className="ul list-unstyled">
-                <li>{com.comment}</li>
-                <br></br>
-                <li>{com.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(com.date)))}</li>
-                <br></br>
-            </div>
+            <Stagger in>
+                <div key={com.id} className="ul list-unstyled">
+                    <Fade in>
+                    <li>{com.comment}</li>
+                    <br></br>
+                    <li> ---- {com.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(com.date)))}</li>
+                    <br></br>
+                    </Fade>
+                </div>
+            </Stagger>
         )
     });
     return comments;
