@@ -1,4 +1,4 @@
-import { act } from 'react-dom/test-utils';
+
 import * as ActionTypes from "./ActionType";
 
 export const Comments = (state = { 
